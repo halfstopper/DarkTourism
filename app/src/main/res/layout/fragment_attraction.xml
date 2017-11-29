@@ -78,6 +78,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 
+        <Button
+            android:id="@+id/btnGetMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Map" />
+
     </LinearLayout>>
 
 </FrameLayout>
