@@ -1,0 +1,118 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.darktourism.Attraction">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/welcome_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="The points of interest from a dark-tourism perspective in Singapore revolve almost exclusively around the topic of WWII and the period of the Japanese occupation."
+            />
+
+        <TextView
+            android:id="@+id/welcome_message2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Area Of Interests "
+            />
+        <Spinner
+            android:id="@+id/spinnerAttractionChoiceInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnGetData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickFindInfo"
+            android:text="Get Attraction Informations" />
+
+
+        <TextView
+            android:id="@+id/Remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Remarks:"
+            />
+
+        <TextView
+            android:id="@+id/txtviewRemark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Address:"
+            />
+
+        <TextView
+            android:id="@+id/txtviewAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Coordinate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Coordinate:"
+            />
+
+        <TextView
+            android:id="@+id/txtviewCoordinate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+<!--        <Spinner
+            android:id="@+id/spinnerAttractionChoiceFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/To"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TO"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerAttractionChoiceTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnGetTravel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickFindTravel"
+            android:text="Get Travel Informations" />
+
+        <TextView
+            android:id="@+id/txtviewBusInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel:"/>
+
+        <TextView
+            android:id="@+id/txtviewCabInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel:"/>-->
+
+
+    </LinearLayout>>
+
+</FrameLayout>
