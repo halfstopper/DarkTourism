@@ -78,7 +78,20 @@ public class Itinerary extends Fragment {
         TextView TravelCab = (TextView) mView.findViewById(R.id.txtviewCabInfo);
         String FromPlace = String.valueOf(spinnerChoiceFrom.getSelectedItem());
         String ToPlace = String.valueOf(spinnerChoiceTo.getSelectedItem());
+
+        if (FromPlace.equals("Former Ford Factory"))
+            FromPlace = "Ford Factory";
+        if (FromPlace.equals("Singapore National Museum"))
+            FromPlace = "National Museum Of Singapore";
+        if (FromPlace.equals("Fort Canning Hill"))
+            FromPlace = "Ford Canning Hill";
+        if (FromPlace.equals("Civilian War Memorial"))
+            FromPlace = "War Memorial Park";
+
+
         for (Travel travel:listTravel){
+
+
             if (travel.getFrom().equals(FromPlace)){
                 String info[] = travel.getTo(ToPlace).split(",");
                 TravelBus.setText("Public Transport: $"+ info[0] + " Traveling Time: " + info[1] + "min");

@@ -47,7 +47,8 @@
         <TextView
             android:id="@+id/txtviewRemark"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/Address"
@@ -60,7 +61,8 @@
         <TextView
             android:id="@+id/txtviewAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/Coordinate"
@@ -73,45 +75,8 @@
         <TextView
             android:id="@+id/txtviewCoordinate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-<!--        <Spinner
-            android:id="@+id/spinnerAttractionChoiceFrom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/To"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="TO"
-            />
-
-        <Spinner
-            android:id="@+id/spinnerAttractionChoiceTo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnGetTravel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickFindTravel"
-            android:text="Get Travel Informations" />
-
-        <TextView
-            android:id="@+id/txtviewBusInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Travel:"/>
-
-        <TextView
-            android:id="@+id/txtviewCabInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Travel:"/>-->
-
+            android:layout_gravity="center"/>
 
     </LinearLayout>>
 

@@ -67,6 +67,9 @@ public class Travel {
     }
 
     public String getFrom() {
+
+
+
         return From;
     }
 
