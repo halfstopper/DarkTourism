@@ -28,7 +28,13 @@ public class Itinerary extends Fragment {
     Spinner spinnerChoiceTo;
     View mView;
     EditText Budget;
-    ArrayList <String >itenary_arraylist = new ArrayList();
+    ArrayList <String>itenary_arraylist = new ArrayList();
+    ArrayList <Double> public_price = new ArrayList();
+    ArrayList <Double> public_time = new ArrayList();
+    ArrayList <Double> cab_price = new ArrayList();
+    ArrayList <Double> cab_time = new ArrayList();
+    ArrayList <String> Mode_Transport = new ArrayList<>();
+
 
 
     @Override
@@ -43,10 +49,12 @@ public class Itinerary extends Fragment {
         listTravel = dbHelper.getAllTravel();
         Budget =(EditText)view.findViewById(R.id.Budget);
 
-
         mView = view;
+
+        //For Spinner Update (Drop Down Menu)
         selectChoiceInfo();
 
+        //AddPlace Button Update
         view.findViewById(R.id.btnAddPlace).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +63,7 @@ public class Itinerary extends Fragment {
             }
         });
 
+        //Delete Place Button Update
         view.findViewById(R.id.btnDeletePlace).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +71,7 @@ public class Itinerary extends Fragment {
                 //onClickFindTravel(view);
             }
         });
-
+        //BruteForce Route Button Update
         view.findViewById(R.id.btnBruteRoute).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +82,7 @@ public class Itinerary extends Fragment {
 
         return view;
     }
-
+    //DropDown Select Attractions
     public void selectChoiceInfo (){
         //spinnerChoiceFrom = (Spinner)mView.findViewById(R.id.spinnerAttractionChoiceFrom);
         spinnerChoiceTo = (Spinner)mView.findViewById(R.id.spinnerAttractionChoiceTo);
@@ -103,6 +112,7 @@ public class Itinerary extends Fragment {
         else if (itenary_arraylist.isEmpty()){
             //Add Starting Location
             itenary_arraylist.add("Marina Bay Sands");
+            itenary_arraylist.add(ToPlace);
         }
         else if (itenary_arraylist.get(itenary_arraylist.size()-1).equals(ToPlace)){
             Toast.makeText(getActivity().getApplicationContext(),"Duplicate Latest Entry",Toast.LENGTH_SHORT).show();
@@ -136,10 +146,17 @@ public class Itinerary extends Fragment {
         itenaryPlace.setText(builder.toString());
     }
 
-    //Using Greedy Algorithm with restraint
+    //Using Greedy Algorithm at first location with restraint with limited Budget
     public void btnBruteRoute(View view){
-
-        double budget_travel;
+        TextView itenaryPlace = (TextView)mView.findViewById(R.id.Iternary_Path);
+        if (public_price.size()>=1){
+            public_price.clear();
+            public_time.clear();
+            cab_price.clear();
+            cab_time.clear();
+            Mode_Transport.clear();
+        }
+        double budget_travel= 0;
         String text = Budget.getText().toString();
         if(!text.isEmpty())
             try
@@ -150,23 +167,62 @@ public class Itinerary extends Fragment {
                 // this means it is not double
                 e1.printStackTrace();
             }
-
         int itenary_size = itenary_arraylist.size();
-        for (int i =0; i<itenary_size ; i ++){
+        for (int i =0; i<itenary_size-1 ; i ++){
             String FromPlace = itenary_arraylist.get(i);
             String ToPlace = itenary_arraylist.get(i+1);
+            //Due to the name is different between 2 tables, I have to convert some place name manually. #Lazy to change DN
+            if (FromPlace.equals("Former Ford Factory"))
+                FromPlace = "Ford Factory";
+            if (FromPlace.equals("Singapore National Museum"))
+                FromPlace = "National Museum Of Singapore";
+            if (FromPlace.equals("Fort Canning Hill"))
+                FromPlace = "Ford Canning Hill";
+            if (FromPlace.equals("Civilian War Memorial"))
+                FromPlace = "War Memorial Park";
+            for (Travel travel:listTravel){
+                if (travel.getFrom().equals(FromPlace)){
+                    String info[] = travel.getTo(ToPlace).split(",");
+                    public_price.add(Double.parseDouble(info[0]));
+                    public_time.add(Double.parseDouble(info[1]));
+                    cab_price.add(Double.parseDouble(info[2]));
+                    cab_time.add(Double.parseDouble(info[3]));
+                }
+            }
         }
+        double duration = 0;
+        for (int i =0; i<itenary_size-1 ; i ++){
+            if (budget_travel <= 0){
+                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Walking");
+            }
+            else if (budget_travel>cab_price.get(i)){
+                String price = String.valueOf(cab_price.get(i));
+                String time = String.valueOf(cab_time.get(i));
+                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Cab $"+price+"  "+time+ "min");
+                budget_travel -= cab_price.get(i);
+                duration += cab_time.get(i);
+
+            }
+            else{
+                String price = String.valueOf(public_price.get(i));
+                String time = String.valueOf(public_time.get(i));
+                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+time+"min");
+                budget_travel -= public_price.get(i);
+                duration += public_time.get(i);
+            }
+
+        }
+        String total_duration = String.valueOf(duration);
+        Mode_Transport.add("Total TIme By Public Transport and Cab = " + total_duration + "min");
+
+        StringBuilder builder = new StringBuilder();
+        for (String line:Mode_Transport){
+            builder.append(line + "\n");
+        }
+        itenaryPlace.setText(builder.toString());
 
 
     }
-
-
-
-
-
-
-
-
 
 
     //Previous code to calculate between distance fare, retreive from SQLite database
@@ -201,8 +257,6 @@ public class Itinerary extends Fragment {
             }
 
         }
-
-
     }*/
 
 }

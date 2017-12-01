@@ -78,15 +78,8 @@ public class Attraction extends Fragment {
                 startActivity(mapIntent);
 
 
-
-/*
-                Toast.makeText(getActivity(), "This is my Toast message!",
-                        Toast.LENGTH_LONG).show();*/
-
             }
         });
-
-
 
 
         return view;

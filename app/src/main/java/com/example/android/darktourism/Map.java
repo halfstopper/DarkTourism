@@ -13,17 +13,32 @@ import android.view.ViewGroup;
  */
 public class Map extends Fragment {
 
-
-    public Map() {
-        // Required empty public constructor
-    }
+    View mView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+
+
+
+
+        //For Button. Fragment work different from usual mainactivity done in class, take note
+        //The view function below is for example
+/*        view.findViewById(R.id.btnGetData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickFindInfo(view);
+            }
+        });*/
+
+
+        mView = view;
+        return view;
     }
 
 }
