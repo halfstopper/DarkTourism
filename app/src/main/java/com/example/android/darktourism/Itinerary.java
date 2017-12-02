@@ -191,6 +191,7 @@ public class Itinerary extends Fragment {
             }
         }
         double duration = 0;
+        double travel_spend = 0;
         for (int i =0; i<itenary_size-1 ; i ++){
             if (budget_travel <= 0){
                 Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Walking");
@@ -200,20 +201,24 @@ public class Itinerary extends Fragment {
                 String time = String.valueOf(cab_time.get(i));
                 Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Cab $"+price+"  "+time+ "min");
                 budget_travel -= cab_price.get(i);
+                travel_spend += cab_price.get(i);
                 duration += cab_time.get(i);
 
             }
             else{
                 String price = String.valueOf(public_price.get(i));
                 String time = String.valueOf(public_time.get(i));
-                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+time+"min");
+                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+" " + time+"min");
                 budget_travel -= public_price.get(i);
+                travel_spend += public_price.get(i);
                 duration += public_time.get(i);
             }
 
         }
         String total_duration = String.valueOf(duration);
-        Mode_Transport.add("Total TIme By Public Transport and Cab = " + total_duration + "min");
+        String total_spend = String.valueOf(travel_spend);
+        Mode_Transport.add("Total Time By Public Transport and Cab = " + total_duration + "min");
+        Mode_Transport.add("Total Expenditure On Public Transport and Cab is $" + total_spend);
 
         StringBuilder builder = new StringBuilder();
         for (String line:Mode_Transport){
