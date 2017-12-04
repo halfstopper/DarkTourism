@@ -4,28 +4,32 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.darktourism.Itinerary">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- TODO: Update blank fragment layout -->
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Budget for traveling in a day: "
-            />
+            android:textColor="#FFFFFF" />
 
         <EditText
             android:id="@+id/Budget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Enter Budget"/>
-            />
+            android:hint="Enter Budget"
+            android:textColorHint="#A87276"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:inputType="number"/>
+
 
 
         <TextView
@@ -33,14 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="FROM"
-            />
-
-<!--        <Spinner
-            android:id="@+id/spinnerAttractionChoiceFrom"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
+            android:text="FROM:"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/StartPoint"
@@ -48,71 +46,63 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Marina Bay Sands"
-            />
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/To"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="TO"
-            />
-
+            android:text="TO:"
+            android:textColor="#FFFFFF" />
         <Spinner
             android:id="@+id/spinnerAttractionChoiceTo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#DCDBD7" />
 
         <Button
             android:id="@+id/btnAddPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add To Iternary" />
+            android:background="#6E6E6E"
+            android:text="Add To Iternary"
+            android:textColor="#FFFFFF" />
 
+
+        <TextView
+            android:id="@+id/Iternary_Place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnDeletePlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Latest Place From Iternary" />
+            android:background="#6E6E6E"
+            android:text="Delete Latest Place From Iternary"
+            android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/Iternary_Place"
-            android:layout_gravity="center"
+            android:id="@+id/Iternary_Path"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnBruteRoute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calculate" />
-
-        <TextView
-            android:id="@+id/Iternary_Path"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:background="#6E6E6E"
+            android:text="Calculate"
+            android:textColor="#FFFFFF" />
 
 
 
-        <!--
-                <TextView
-                    android:id="@+id/txtviewBusInfo"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtviewCabInfo"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-        -->
-
-
-
-
-        </LinearLayout>>
 
 </FrameLayout>

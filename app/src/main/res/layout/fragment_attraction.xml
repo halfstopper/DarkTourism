@@ -7,83 +7,98 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/welcome_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="The points of interest from a dark-tourism perspective in Singapore revolve almost exclusively around the topic of WWII and the period of the Japanese occupation."
-            />
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <TextView
-            android:id="@+id/welcome_message2"
-            android:layout_width="wrap_content"
+            android:id="@+id/welcome_message"
+            android:layout_width="361dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Area Of Interests "
-            />
+            android:layout_gravity="center"
+            android:text="Points of interest from a dark-tourism perspective in Singapore revolve almost exclusively around the topic of WWII and the period of the Japanese occupation."
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
         <Spinner
             android:id="@+id/spinnerAttractionChoiceInfo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:background="#DCDBD7" />
 
         <Button
             android:id="@+id/btnGetData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#6E6E6E"
             android:onClick="onClickFindInfo"
-            android:text="Get Attraction Informations" />
+            android:text="Get Attraction Informations"
+            android:textColor="@android:color/white" />
 
 
         <TextView
             android:id="@+id/Remark"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="Remarks:"
-            />
+            android:textColor="#A87276"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtviewRemark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Address"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="Address:"
-            />
+            android:textColor="#A87276"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtviewAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Coordinate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="Coordinate:"
-            />
+            android:textColor="#A87276"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtviewCoordinate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnGetMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get Map" />
+            android:background="#6E6E6E"
+            android:text="Get Map"
+            android:textColor="@android:color/white" />
 
-    </LinearLayout>>
+    </LinearLayout>
 
 </FrameLayout>
