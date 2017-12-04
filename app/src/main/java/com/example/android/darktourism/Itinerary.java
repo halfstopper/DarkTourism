@@ -195,31 +195,7 @@ public class Itinerary extends Fragment {
         }
         double duration = 0;
         double travel_spend = 0;
-/*        for (int i =0; i<itenary_size-1 ; i ++){
-            if (budget_travel <= 0){
-                String time = String.valueOf(walking_time.get(i));
-                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Walking in " + time + " min");
-                duration += walking_time.get(i);
-            }
-            else if (budget_travel>cab_price.get(i)){
-                String price = String.valueOf(cab_price.get(i));
-                String time = String.valueOf(cab_time.get(i));
-                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Cab $"+price+"  "+time+ "min");
-                budget_travel -= cab_price.get(i);
-                travel_spend += cab_price.get(i);
-                duration += cab_time.get(i);
 
-            }
-            else{
-                String price = String.valueOf(public_price.get(i));
-                String time = String.valueOf(public_time.get(i));
-                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+price+" " + time+"min");
-                budget_travel -= public_price.get(i);
-                travel_spend += public_price.get(i);
-                duration += public_time.get(i);
-            }
-
-        }*/
 
 
         for (int i =0; i<itenary_size-1 ; i ++){
