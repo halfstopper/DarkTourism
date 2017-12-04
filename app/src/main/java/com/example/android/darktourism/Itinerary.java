@@ -33,6 +33,7 @@ public class Itinerary extends Fragment {
     ArrayList <Double> public_time = new ArrayList();
     ArrayList <Double> cab_price = new ArrayList();
     ArrayList <Double> cab_time = new ArrayList();
+    ArrayList <Double> walking_time = new ArrayList();
     ArrayList <String> Mode_Transport = new ArrayList<>();
 
 
@@ -154,6 +155,7 @@ public class Itinerary extends Fragment {
             public_time.clear();
             cab_price.clear();
             cab_time.clear();
+            walking_time.clear();
             Mode_Transport.clear();
         }
         double budget_travel= 0;
@@ -187,6 +189,7 @@ public class Itinerary extends Fragment {
                     public_time.add(Double.parseDouble(info[1]));
                     cab_price.add(Double.parseDouble(info[2]));
                     cab_time.add(Double.parseDouble(info[3]));
+                    walking_time.add(Double.parseDouble(info[4]));
                 }
             }
         }
@@ -194,7 +197,9 @@ public class Itinerary extends Fragment {
         double travel_spend = 0;
         for (int i =0; i<itenary_size-1 ; i ++){
             if (budget_travel <= 0){
-                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Walking");
+                String time = String.valueOf(walking_time.get(i));
+                Mode_Transport.add("To " + itenary_arraylist.get(i+1)+" By Walking in " + time + " min");
+                duration += walking_time.get(i);
             }
             else if (budget_travel>cab_price.get(i)){
                 String price = String.valueOf(cab_price.get(i));
@@ -208,7 +213,7 @@ public class Itinerary extends Fragment {
             else{
                 String price = String.valueOf(public_price.get(i));
                 String time = String.valueOf(public_time.get(i));
-                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+" " + time+"min");
+                Mode_Transport.add("To " +itenary_arraylist.get(i+1)+" By Public Transport $"+price+" " + time+"min");
                 budget_travel -= public_price.get(i);
                 travel_spend += public_price.get(i);
                 duration += public_time.get(i);
@@ -217,8 +222,8 @@ public class Itinerary extends Fragment {
         }
         String total_duration = String.valueOf(duration);
         String total_spend = String.valueOf(travel_spend);
-        Mode_Transport.add("Total Time By Public Transport and Cab = " + total_duration + "min");
-        Mode_Transport.add("Total Expenditure On Public Transport and Cab is $" + total_spend);
+        Mode_Transport.add("Total Time By Walking/Public Transport/Cab = " + total_duration + "min");
+        Mode_Transport.add("Total Expenditure On Transportation is $" + total_spend);
 
         StringBuilder builder = new StringBuilder();
         for (String line:Mode_Transport){
@@ -228,40 +233,5 @@ public class Itinerary extends Fragment {
 
 
     }
-
-
-    //Previous code to calculate between distance fare, retreive from SQLite database
-/*    public void onClickFindTravel(View view) {
-        spinnerChoiceFrom = (Spinner)mView.findViewById(R.id.spinnerAttractionChoiceFrom);
-        spinnerChoiceTo = (Spinner)mView.findViewById(R.id.spinnerAttractionChoiceTo);
-        TextView TravelBus = (TextView) mView.findViewById(R.id.txtviewBusInfo);
-        TextView TravelCab = (TextView) mView.findViewById(R.id.txtviewCabInfo);
-        String FromPlace = String.valueOf(spinnerChoiceFrom.getSelectedItem());
-        String ToPlace = String.valueOf(spinnerChoiceTo.getSelectedItem());
-
-
-
-        if (FromPlace.equals("Former Ford Factory"))
-            FromPlace = "Ford Factory";
-        if (FromPlace.equals("Singapore National Museum"))
-            FromPlace = "National Museum Of Singapore";
-        if (FromPlace.equals("Fort Canning Hill"))
-            FromPlace = "Ford Canning Hill";
-        if (FromPlace.equals("Civilian War Memorial"))
-            FromPlace = "War Memorial Park";
-
-        for (Travel travel:listTravel){
-            if (travel.getFrom().equals(FromPlace)){
-                String info[] = travel.getTo(ToPlace).split(",");
-                //info[0] Public Transport Price
-                //info[1] Public Transport Travelling Time
-                //info[2] Cab Ride Price
-                //info[3] Cab Ride Traveling time
-                TravelBus.setText("Public Transport: $"+ info[0] + " Traveling Time: " + info[1] + "min");
-                TravelCab.setText("Cab Ride        : $"+ info[2] + " Traveling Time: " + info[3] + "min");
-            }
-
-        }
-    }*/
 
 }
